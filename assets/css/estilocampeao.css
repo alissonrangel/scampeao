@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/10/2019, 10:02:30
+    Author     : alissoncarvalho
+*/
+
+.setas{
+    color: #bec2c6;
+    font-size: 12px;        
+}
+
+.setas:hover{
+    color: #686B6F;
+    text-decoration: none !important;
+}
+
+.janela{
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    border-radius: 25px;    
+}

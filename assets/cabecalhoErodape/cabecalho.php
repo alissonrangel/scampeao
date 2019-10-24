@@ -9,7 +9,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Campeão</title>
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
-        
+        <link rel="stylesheet" href="assets/css/estilocampeao.css"
     </head>
 
     <?php
