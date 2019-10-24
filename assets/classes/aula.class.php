@@ -65,6 +65,34 @@ class Aula {
         return $aulas;
     }
     
+    public static function temAulaNesteDia($id_usuario, $pdo, $data) {
+        
+        
+        $sql = "SELECT * "
+                . "FROM aula a "
+                . "INNER JOIN materia m "
+                . "on a.id_materia = m.idmateria "                
+                . "WHERE a.id_usuario = :id "
+                . "AND data >= '$data 00:00:00' "
+                . "AND data <= '$data 23:59:59' "
+                . "order by tipo, data";
+       
+        //echo 'Alisson';
+        
+        $sql = $pdo->prepare($sql);
+        
+        $sql->bindValue(":id", $id_usuario);
+        //$sql->bindValue(":data", $data);
+        $sql->execute();
+        
+        $aulas = [];
+        if ($sql->rowCount() > 0) {
+            $aulas = $sql->fetchAll();
+            return true;
+        }
+        return false;
+    }
+    
     public static function listarAulasByIdData($id_usuario, $pdo, $data) {
         
         
