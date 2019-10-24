@@ -9,5 +9,11 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>Campeão</title>
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
+        
     </head>
-    <body>
+
+    <?php
+    require 'assets/classes/aula.class.php';
+    require 'assets/classes/materia.class.php';
+    require 'assets/classes/usuario.class.php';
+    ?>
