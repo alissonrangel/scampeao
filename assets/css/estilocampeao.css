@@ -8,46 +8,8 @@ and open the template in the editor.
     Author     : alissoncarvalho
 */
 
-.setas{
-    color: #666;
-    font-size: 12px;        
-}
-
-.setas:hover, .setas2:hover{
-    color: #333;
-    text-decoration: none !important;
-}
-
-.setas2{
-    color: #666;
-    font-size: 10px;        
-}
-
-td a{
-    position: relative;
-    left: -30px;
-    top: 10px;
-}
-
-tr{
-    height: 33px;
-}
-td{
-    padding: 0 !important;    
-}
-td i{
-    color: white;
-    font-size: 6px;
-}
-td span{
-    left: -1px;
-    top: -3px;
-    position: relative;
-}
-
-i:hover{
-    color: #686B6F;
-    text-decoration: none !important;
+header{
+    height: 80px;
 }
 
 .janela{
@@ -56,4 +18,80 @@ i:hover{
     height: 200px;
     background-color: white;
     border-radius: 25px;    
+}
+
+.calendario2{
+    width: 100%;
+}
+
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (min-width: 320px) { 
+    header{
+        height: 90px;
+    }
+    nav{
+        height: 90px;
+    }
+    .calendario2{
+        width: 100%;
+    }
+
+    .setas{
+        color: #666;
+        font-size: 50px;        
+    }
+
+    .setas:hover, .setas2:hover{
+        color: #333;
+        text-decoration: none !important;
+    }
+
+    .calendar{
+        position:fixed;
+        left:0;
+        top:91px;
+        display:none;
+        transition: all ease .5s;    
+    }
+
+    th{
+        font-size: 40px;
+    }
+
+    tr{
+        height: 100px;
+    }
+
+    td a{
+        display: block;        
+    }
+
+    td .icone-calendar{
+        color: white;
+        font-size: 50px;
+    }
+    td .data-calendar{
+        left: -1px;
+        top: -3px;
+        position: relative;
+        color: #aaa;
+        font-size: 30px;    
+    }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) { 
+
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { 
+
+}
+
+/* Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) { 
+
 }

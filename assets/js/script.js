@@ -173,3 +173,30 @@ let povoar = (valor) => {
 
 }
 
+let funcao = function () {
+    /*
+    if ($('table').hasClass('table-calendar')) {
+        $('table').attr('style', 'display: none');
+        $('table').removeClass('table-calendar');
+    } else {
+        $('table').attr('style', 'display: normal');
+        $('table').addClass('table-calendar');
+    }*/
+
+    c('.calendar').style.opacity = '0';
+    c('.calendar').style.display = 'block';
+
+    setTimeout(() => {
+        c('.calendar').style.opacity = '1';
+        //para ter um efeito trasiction ativado, como foi no style.css
+        //qq alteracao no elemto dessa classe, há um efeito de transição
+    }, 200);
+}
+
+function closeModal() {
+    c('.calendar').style.opacity = '0';
+
+    setTimeout(() => {
+        c('.calendar').style.display = 'none';
+    }, 500);
+}
