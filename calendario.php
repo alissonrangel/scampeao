@@ -25,11 +25,9 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
 //echo '<br> dia fim do calendario' . $dia_fim;
 ?>
 
-
-<button class="align-self-center setas" onclick="funcao()"><?php echo $mes; ?></button>
-<div class="calendar w-100"  style="background-color: #ddd; border: 1px solid #bec2c6; border-radius: 5px;">
+<div class="calendar"  style="background-color: #ddd; border: 1px solid #bec2c6; border-radius: 5px;">
     
-    <div class="d-flex justify-content-between w-100" >
+    <div class="d-flex justify-content-between" >
         <form method="GET" >
             <input type="hidden" name="data" value="<?php echo date('Y-m', strtotime("-1 month", strtotime($data2 . "-01"))); ?>">
             <input type="hidden" name="modal" value="mostrar">
@@ -52,7 +50,7 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
         </form>
     </div>
 
-    <table class="table-calendar table table-bordered table-sm w-100 mb-0 table-dark"  >
+    <table class="table-calendar table table-bordered table-sm mb-0 table-dark"  >
         <thead class="" style="">
             <tr class="" style="text-align: center;" >
                 <th >DOM</th>

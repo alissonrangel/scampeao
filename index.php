@@ -4,21 +4,22 @@ require './assets/cabecalhoErodape/cabecalho.php';
 $_SESSION['nome'] = "Alisson";
 require './aulasdodia.php';
 
+$modal = "";
 if (isset($_GET['modal'])) {
     $modal = $_GET['modal'];
 
     if ($modal == 'mostrar') {
-        $modal = 'funcao()';
+        $modal = ', funcao()';
     } else {
-        $modal = 'closeModal()';
+        $modal = ', closeModal()';
     }
 }
 ?>
-<body onload="povoar2('<?php echo $aulasString; ?>'), <?php echo $modal; ?>">
-    <header onclick="closeModal()">
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-transparente fixed-top bg-dark" >
+<body onload="povoar2('<?php echo $aulasString; ?>') <?php echo $modal; ?>">
+    <header class="bg-dark" onclick="closeModal()">       
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-transparente bg-dark" >
             <div class="container">
-                <a class="navbar-brand" href="index.php"><img src="assets/imagens/logomarcaac.png" width="200"></a>
+                <a class="navbar-brand" href="index.php"><img src="assets/imagens/logomarcaac.png" height="30"></a>
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
                     <span class="navbar-toggler-icon" style="color: white"></span>
                 </button>
@@ -57,13 +58,14 @@ if (isset($_GET['modal'])) {
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav>       
     </header>
-    <div class="calendario container-fluid d-flex justify-content-center">
+    <div class="calendario">
         <?php
         require './calendario.php';
         ?>
     </div>
+    <button class="align-self-center setas" onclick="funcao()"><?php echo $mes; ?></button>
     <div class="models" style="display: none">
 
         <?php foreach ($aulas as $valor): ?>

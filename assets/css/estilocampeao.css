@@ -20,19 +20,16 @@ header{
     border-radius: 25px;    
 }
 
-.calendario2{
-    width: 100%;
-}
 
 
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (min-width: 320px) { 
     header{
-        height: 90px;
+        height: 60px;
     }
     nav{
-        height: 90px;
+
     }
     .calendario2{
         width: 100%;
@@ -51,7 +48,7 @@ header{
     .calendar{
         position:fixed;
         left:0;
-        top:91px;
+        top:61px;
         display:none;
         transition: all ease .5s;    
     }
@@ -82,8 +79,49 @@ header{
 }
 
 /* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) { 
+@media (min-width: 568px) { 
+    .setas{
+        color: #666;
+        font-size: 30px;        
+    }
 
+    .setas:hover, .setas2:hover{
+        color: #333;
+        text-decoration: none !important;
+    }
+
+    .calendar{
+        position:fixed;
+        width: 70%;
+        left:0;
+        top:61px;
+        display:none;
+        transition: all ease .5s;    
+    }
+
+    th{
+        font-size: 20px;
+    }
+
+    tr{
+        height: 60px;
+    }
+
+    td a{
+        display: block;        
+    }
+
+    td .icone-calendar{
+        color: white;
+        font-size: 25px;
+    }
+    td .data-calendar{
+        left: -1px;
+        top: -3px;
+        position: relative;
+        color: #aaa;
+        font-size: 15px;    
+    }
 }
 
 /* Medium devices (tablets, less than 992px) */
