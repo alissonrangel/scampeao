@@ -1,7 +1,7 @@
 <?php
 session_start();
 require './assets/cabecalhoErodape/cabecalho.php';
-$_SESSION['nome'] = "Alisson";
+$_SESSION['nome'] = "Rlisson2";
 require './aulasdodia.php';
 
 $modal = "";
@@ -16,49 +16,51 @@ if (isset($_GET['modal'])) {
 }
 ?>
 <body onload="povoar2('<?php echo $aulasString; ?>') <?php echo $modal; ?>">
-    <header class="bg-dark" onclick="closeModal()">       
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-transparente bg-dark" >
-            <div class="container">
-                <a class="navbar-brand" href="index.php"><img src="assets/imagens/logomarcaac.png" height="30"></a>
-                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-                    <span class="navbar-toggler-icon" style="color: white"></span>
-                </button>
-                <div class="navbar-collapse collapse" id="navbarMenu">
-                    <div>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="index.php" class="nav-link active">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="semTutor/index.php" class="nav-item nav-link">Sem Tutor</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="comTutor/index.php" class="nav-item nav-link disabled">Com Tutor</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="" class="nav-item nav-link disabled">Sobre</a>
-                            </li>                                
-                        </ul>
-                    </div>
+    <header class="bg-dark" onclick="closeModal()">
+        <div class="w-100">
+            <nav class="align-self-center navbar navbar-expand-lg navbar-dark navbar-transparente bg-dark" >
+                <div class="container">
+                    <a class="navbar-brand" href="index.php"><img src="assets/imagens/logomarcaac.png" width="200"></a>
+                    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+                        <span class="navbar-toggler-icon" style="color: white"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbarMenu">
+                        <div>
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a href="index.php" class="nav-link active">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="semTutor/index.php" class="nav-item nav-link">Sem Tutor</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="comTutor/index.php" class="nav-item nav-link disabled">Com Tutor</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="" class="nav-item nav-link disabled">Sobre</a>
+                                </li>                                
+                            </ul>
+                        </div>
 
-                    <div class="ml-auto" >
-                        <ul class="navbar-nav">                                
-                            <li class="nav-item">
-                                <a class="nav-item nav-link" target="_blank" href="https://twitter.com/alissonrangel10"><i class="fab fa-twitter-square fa-lg"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a target="_blank" class="nav-item nav-link" href="https://www.facebook.com/profile.php?id=100006951676951"><i class="fab fa-facebook fa-lg"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a target="_blank" class="nav-item nav-link" href="https://www.instagram.com/alissondicarvalho"><i class="fab fa-instagram fa-lg"></i></a>
-                            </li>
-                            <li class="nav-item"><a class="nav-item nav-link disabled" href=""><?php echo $_SESSION['nome']; ?></a>
-                        </ul>
+                        <div class="ml-auto" >
+                            <ul class="navbar-nav">                                
+                                <li class="nav-item">
+                                    <a class="nav-item nav-link" target="_blank" href="https://twitter.com/alissonrangel10"><i class="fab fa-twitter-square fa-lg"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a target="_blank" class="nav-item nav-link" href="https://www.facebook.com/profile.php?id=100006951676951"><i class="fab fa-facebook fa-lg"></i></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a target="_blank" class="nav-item nav-link" href="https://www.instagram.com/alissondicarvalho"><i class="fab fa-instagram fa-lg"></i></a>
+                                </li>
+                                <li class="nav-item"><a class="nav-item nav-link disabled" href=""><?php echo $_SESSION['nome']; ?></a>
+                            </ul>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>       
+            </nav>      
+        </div>
     </header>
     <div class="calendario">
         <?php

@@ -27,17 +27,18 @@ header{
 @media (min-width: 320px) { 
     header{
         height: 60px;
+        display: flex;        
     }
     nav{
-
+        width: 100%;
     }
-    .calendario2{
+    .calendario{
         width: 100%;
     }
 
     .setas{
         color: #666;
-        font-size: 50px;        
+        font-size: 18px;        
     }
 
     .setas:hover, .setas2:hover{
@@ -46,19 +47,20 @@ header{
     }
 
     .calendar{
-        position:fixed;
+        position:relative;
         left:0;
-        top:61px;
+        top:0;
         display:none;
-        transition: all ease .5s;    
+        /*transition: all ease .5s;*/
     }
 
     th{
-        font-size: 40px;
+        padding: 0 !important;
+        font-size: 18px;
     }
 
     tr{
-        height: 100px;
+        height: 30px;
     }
 
     td a{
@@ -67,27 +69,35 @@ header{
 
     td .icone-calendar{
         color: white;
-        font-size: 50px;
     }
     td .data-calendar{
         left: -1px;
         top: -3px;
         position: relative;
         color: #aaa;
-        font-size: 30px;    
+        font-size: 10px;    
     }
 }
 
 /* Small devices (landscape phones, less than 768px) */
-@media (min-width: 568px) { 
+@media (min-width: 576px) {
+    header{
+        height: 60px;
+    }
     .setas{
         color: #666;
-        font-size: 30px;        
+        font-size: 20px;        
     }
 
     .setas:hover, .setas2:hover{
         color: #333;
         text-decoration: none !important;
+    }
+    
+    .menu-calendar{
+        background-color: #ddd;
+        display: flex;
+        justify-content: space-between;
     }
 
     .calendar{
@@ -96,7 +106,8 @@ header{
         left:0;
         top:61px;
         display:none;
-        transition: all ease .5s;    
+        /*transition: all ease .5s;*/
+        border-radius: 5px;
     }
 
     th{
@@ -125,11 +136,11 @@ header{
 }
 
 /* Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) { 
+@media (min-width: 768px) { 
 
 }
 
 /* Large devices (desktops, less than 1200px)*/
-@media (max-width: 1199.98px) { 
+@media (min-width: 992px) { 
 
 }

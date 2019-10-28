@@ -25,9 +25,8 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
 //echo '<br> dia fim do calendario' . $dia_fim;
 ?>
 
-<div class="calendar"  style="background-color: #ddd; border: 1px solid #bec2c6; border-radius: 5px;">
-    
-    <div class="d-flex justify-content-between" >
+<div class="calendar" id="calenda" >
+    <div class="menu-calendar d-flex justify-content-between" >
         <form method="GET" >
             <input type="hidden" name="data" value="<?php echo date('Y-m', strtotime("-1 month", strtotime($data2 . "-01"))); ?>">
             <input type="hidden" name="modal" value="mostrar">
@@ -37,11 +36,11 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
                 </span>
             </button>
         </form>
-        <button class="align-self-center setas" onclick=""><?php echo $mes; ?></button>
-        <form method="GET">
+        <button class="btn btn-link align-self-center setas" onclick=""><?php echo $mes; ?></button>
+        <form method="GET"> 
             <input type="hidden" name="data" value="<?php echo date('Y-m', strtotime("+1 month", strtotime($data2 . "-01"))); ?>">
             <input type="hidden" name="modal" value="mostrar">
-            <button type="submit" class="btn btn-link setas"  >
+            <button type="submit" class="btn btn-link setas" onclick="funcao('<?php echo date('Y-m', strtotime("+1 month", strtotime($data2 . "-01"))); ?>')"  >
                 <span class="mr-2 setas" >
                     <?php echo date('M', strtotime("+1 month", strtotime($data2 . "-01"))); ?>
                     >
@@ -50,7 +49,7 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
         </form>
     </div>
 
-    <table class="table-calendar table table-bordered table-sm mb-0 table-dark"  >
+    <table id="" class="table-calendar table table-bordered table-sm mb-0 table-dark"  >
         <thead class="" style="">
             <tr class="" style="text-align: center;" >
                 <th >DOM</th>

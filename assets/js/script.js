@@ -185,7 +185,7 @@ let funcao = function () {
 
     c('.calendar').style.opacity = '0';
     c('.calendar').style.display = 'block';
-
+    //return $('#data').val();
     setTimeout(() => {
         c('.calendar').style.opacity = '1';
         //para ter um efeito trasiction ativado, como foi no style.css
@@ -200,3 +200,7 @@ function closeModal() {
         c('.calendar').style.display = 'none';
     }, 500);
 }
+
+//let calenda = $('.calendar').width();
+//let esquerda = (window.innerWidth/2) - (Math.floor(calenda/2));
+//$('.calendar').attr('style','left:'+esquerda+'px');
