@@ -25,8 +25,8 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
 //echo '<br> dia fim do calendario' . $dia_fim;
 ?>
 <div class="">
-    <div class="dropdown menu-calendar pl-1 pr-1" >
-        <div class="pb-1 pt-1 d-flex justify-content-between">
+    <div class="dropdown menu-calendar pl-1 pr-1" style="">
+        <div class="pb-1 pt-1 d-flex justify-content-between" style="">
             <form method="GET" >
                 <input type="hidden" name="data" value="<?php echo date('Y-m', strtotime("-1 month", strtotime($data2 . "-01"))); ?>">
                 <input type="hidden" name="modal" value="mostrar">

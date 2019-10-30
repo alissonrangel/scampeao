@@ -1,19 +1,11 @@
 <?php
 session_start();
 require './assets/cabecalhoErodape/cabecalho.php';
-$_SESSION['nome'] = "Rlisson2";
-require './aulasdodia.php';
+//require './assets/classes/materia.class.php';
 
-$modal = "";
-if (isset($_GET['modal'])) {
-    $modal = $_GET['modal'];
+$materia = new Materia();
 
-    if ($modal == 'mostrar') {
-        $modal = ', funcao()';
-    } else {
-        $modal = ', closeModal()';
-    }
-}
+$materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
 ?>
 <body onload="povoar2('<?php echo $aulasString; ?>') <?php echo $modal; ?>">
     <header class="bg-dark" onclick="closeModal()">
@@ -62,52 +54,41 @@ if (isset($_GET['modal'])) {
             </nav>      
         </div>
     </header>
-    <div class="container-fluid menu mt-2">
-        <a class="btn btn-dark" href="adicionar_materia.php">Adicionar Matéria</a>
-        <a class="btn btn-dark" href="adicionar_aula.php">Adicionar Aula</a>
-    </div>
-    <div class="mt-2" style="background-color: #ddd">
-        <div class="calendario container-fluid">
-            <?php
-            require './calendario.php';
-            ?>
-        </div>
-    </div>
-    <!-- <button class="align-self-center setas" onclick="funcao()"><?php echo $mes; ?></button> -->
-    <div class="models" style="display: none">
 
-        <?php foreach ($aulas as $valor): ?>
-            <div class="aula-item2">
-                <div class="aula-item2-cabecalho">
-                    <div class="aula2-data"><?php echo "data:" . $valor['data']; ?></div>
-                    <div class="aula2-materia"><?php echo "matéria:" . $valor['nome_materia']; ?></div>
-                    <div class="aula2-tipo-aula">Hoje</div>
-                </div>
-                <div class="aula-item2-conteudo">
-                    <?php echo "assunto:" . $valor['assunto']; ?>
-                </div>
+    <div class="container-fluid info-barra d-flex justify-content-center align-items-center">
+        Cadastrar matéria
+    </div>
+    <div class="container-fluid lista-materias">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>idmateria</th>
+                    <th>Nome matéria</th>
+                    <th>id_usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($materias as $valor) {
+                    echo '<tr>';
+                    echo "<td>" . $valor['idmateria'] . "</td>";
+                    echo "<td>" . $valor['nome_materia'] . "</td>";
+                    echo "<td>" . $valor['id_usuario'] . "</td>";
+                    echo '</tr>';
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+    <div class="container-fluid">
+        <form class="form" method="POST">
+            <div class="form-group">
             </div>
-        <?php endforeach; ?>
-
-        <div class="aula-item" style="">
-            <a class="" href="">
-                <div class="bloco">
-                    <div class="aula-url" data-url="<?php echo $_GET['data']; ?>" style="display: none"><?php echo $_GET['data']; ?></div>
-                    <div class="aula-data"></div>
-                    <div class="aula-materia"></div>
-                    <div class="aula-tipo-aula"></div>
-                    <div class="aula-conteudo"></div>
-                </div>
-            </a>
-
-        </div>
-
+        </form>
     </div>
-    <main class="container-fluid mt-2">
-        <div class="aula-area">
 
-        </div>        
-    </main>
+
+
 
 
 

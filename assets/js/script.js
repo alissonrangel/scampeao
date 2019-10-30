@@ -224,6 +224,7 @@ let alternar = () => {
     }
 }
 
+/*
 function closeModal() {
     c('.calendar').style.opacity = '0';
 
@@ -231,6 +232,7 @@ function closeModal() {
         c('.calendar').style.display = 'none';
     }, 500);
 }
+*/
 
 //let calenda = $('.calendar').width();
 //let esquerda = (window.innerWidth/2) - (Math.floor(calenda/2));
