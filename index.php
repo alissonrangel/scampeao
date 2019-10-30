@@ -67,7 +67,7 @@ if (isset($_GET['modal'])) {
         require './calendario.php';
         ?>
     </div>
-    <button class="align-self-center setas" onclick="funcao()"><?php echo $mes; ?></button>
+    <!-- <button class="align-self-center setas" onclick="funcao()"><?php echo $mes; ?></button> -->
     <div class="models" style="display: none">
 
         <?php foreach ($aulas as $valor): ?>
@@ -83,15 +83,14 @@ if (isset($_GET['modal'])) {
             </div>
         <?php endforeach; ?>
 
-        <div class="aula-item bg-dark" style="width: 150px; height: 150px;">
-            <div class="aula-item-cabecalho">
-                <div class="aula-data"></div>
-                <div class="aula-materia"></div>
-                <div class="aula-tipo-aula"></div>
-            </div>
-            <div class="aula-item-conteudo">
+        <div class="aula-item" style="">
+            <a class="btn btn-dark" href="">Alterar Status</a>
+            <div class="aula-url" data-url="<?php echo $_GET['data']; ?>" style="display: none"><?php echo $_GET['data']; ?></div>
+            <div class="aula-data"></div>
+            <div class="aula-materia"></div>
+            <div class="aula-tipo-aula"></div>
+            <div class="aula-conteudo"></div>
 
-            </div>
         </div>
 
     </div>

@@ -18,12 +18,14 @@ let povoar2 = (valor) => {
     if (array.length == 1) {
 
     } else {
-        for (var i = 0, max = (array.length / 4); i < max; i++) {
+        for (var i = 0, max = (array.length / 6); i < max; i++) {
             aulas1.push({
-                assunto: array[(i * 4) + 0].toString(),
-                data: array[(i * 4) + 1].toString(),
-                materia: array[(i * 4) + 2].toString(),
-                tipo: array[(i * 4) + 3].toString()
+                assunto: array[(i * 6) + 0].toString(),
+                data: array[(i * 6) + 1].toString(),
+                materia: array[(i * 6) + 2].toString(),
+                tipo: array[(i * 6) + 3].toString(),
+                status: array[(i * 6) + 4].toString(),
+                id: array[(i * 6) + 5].toString()
             });
         }
     }
@@ -38,14 +40,34 @@ let povoar2 = (valor) => {
 
     aulas1.map((item, index) => {
         console.log("entrou");
-        let {assunto, data, materia, tipo} = item;
+        let {assunto, data, materia, tipo, status, id} = item;
         let aulaItem = document.querySelector('.aula-item').cloneNode(true);
         aulaItem.setAttribute('data-key', index);
-        aulaItem.querySelector('.aula-data').innerHTML = data;
+
+        if (status == 0) {
+            //aulaItem.addClass('bg-danger');
+            aulaItem.classList.add('bg-danger')
+            //aulaItem.setAttribute('style', 'background-color: red');
+        } else {
+            aulaItem.classList.add('bg-success')
+            //aulaItem.addClass('bg-success');
+            //aulaItem.setAttribute('style', 'background-color: green')
+        }
+        
+        let data2 = data.split(' ');
+        let date = new Date(data2[0]+"T"+data2[1]);
+        let mes = date.getMonth() + 1;
+        let dataa = date.getDate().toString() +
+                "/" + ((mes >= 10) ? mes.toString() : "0" + mes.toString()) +
+                "/" + date.getFullYear().toString();
+        console.log("daddddddd: "+dataa);
+        aulaItem.querySelector('.aula-data').innerHTML = dataa;
         aulaItem.querySelector('.aula-materia').innerHTML = materia;
-        aulaItem.querySelector('.aula-item-conteudo').innerHTML = assunto;
+        aulaItem.querySelector('.aula-conteudo').innerHTML = assunto;
         aulaItem.querySelector('.aula-tipo-aula').innerHTML = tipo;
-        c('.aula-area').style.display = 'flex';
+        let data3 = aulaItem.querySelector('.aula-url').innerHTML;
+        aulaItem.querySelector('a').setAttribute('href','alterarStatus.php?id='+id+"&data="+data3);
+        
         document.querySelector('.aula-area').append(aulaItem);
     });
 }
@@ -175,13 +197,13 @@ let povoar = (valor) => {
 
 let funcao = function () {
     /*
-    if ($('table').hasClass('table-calendar')) {
-        $('table').attr('style', 'display: none');
-        $('table').removeClass('table-calendar');
-    } else {
-        $('table').attr('style', 'display: normal');
-        $('table').addClass('table-calendar');
-    }*/
+     if ($('table').hasClass('table-calendar')) {
+     $('table').attr('style', 'display: none');
+     $('table').removeClass('table-calendar');
+     } else {
+     $('table').attr('style', 'display: normal');
+     $('table').addClass('table-calendar');
+     }*/
 
     c('.calendar').style.opacity = '0';
     c('.calendar').style.display = 'block';

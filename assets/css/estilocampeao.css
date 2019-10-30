@@ -20,6 +20,26 @@ header{
     border-radius: 25px;    
 }
 
+.aula-item{
+    color: #343A40;
+    padding: 5px;
+    margin-right: 5px;
+    border: 1px double #333;
+    border-radius: 10px;
+}
+
+.bg-danger{
+    
+}
+
+.bg-success{
+    
+}
+
+.aula-area{
+    display: flex;
+    flex-flow: wrap;
+}
 
 
 
@@ -34,6 +54,10 @@ header{
     }
     .calendario{
         width: 100%;
+    }
+    
+    .menu-calendar{
+        background-color: #ddd;
     }
 
     .setas{

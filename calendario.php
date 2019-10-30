@@ -24,9 +24,8 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
 //echo '<br>dia um:' . $dia_um;
 //echo '<br> dia fim do calendario' . $dia_fim;
 ?>
-
-<div class="calendar" id="calenda" >
-    <div class="menu-calendar d-flex justify-content-between" >
+<div class="">
+    <div class="dropdown menu-calendar d-flex justify-content-between" >
         <form method="GET" >
             <input type="hidden" name="data" value="<?php echo date('Y-m', strtotime("-1 month", strtotime($data2 . "-01"))); ?>">
             <input type="hidden" name="modal" value="mostrar">
@@ -36,7 +35,7 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
                 </span>
             </button>
         </form>
-        <button class="btn btn-link align-self-center setas" onclick=""><?php echo $mes; ?></button>
+        <button data-toggle="dropdown" class="dropdown-toggle btn btn-link align-self-center setas" onclick=""><?php echo $mes; ?></button>
         <form method="GET"> 
             <input type="hidden" name="data" value="<?php echo date('Y-m', strtotime("+1 month", strtotime($data2 . "-01"))); ?>">
             <input type="hidden" name="modal" value="mostrar">
@@ -47,8 +46,41 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
                 </span>
             </button>
         </form>
-    </div>
+        <div class="dropdown-menu">
+            <table id="" class="table-calendar table table-bordered table-sm mb-0 table-dark"  >
+                <thead class="" style="">
+                    <tr class="" style="text-align: center;" >
+                        <th >DOM</th>
+                        <th>SEG</th>
+                        <th>TER</th>
+                        <th>QUA</th>
+                        <th>QUI</th>
+                        <th>SEX</th>
+                        <th class="">SAB</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $x = 0;
+                    for ($i = 0; $i < $linhas; $i++) {
+                        echo '<tr>';
+                        for ($index = 0; $index < 7; $index++) {
 
+                            $dia_x = date('d-m', strtotime(($dia1_neg + $index + ($i * 7) ) . " days", strtotime($data2 . "")));
+                            $dia_x2 = date('Y-m-d', strtotime(($dia1_neg + $index + ($i * 7) ) . " days", strtotime($data2 . "")));
+                            echo "<td><span class='data-calendar'>" . $dia_x . "</span>" . ((Aula::temAulaNesteDia($usuario->getIdusuario(), $aula->getPdo(), $dia_x2)) ? "<a class='icone-calendar' onclick='closeModal()' href='index.php?data=" . $dia_x2 . "'> <i class='fab fa-twitter-square fa-xg'></i></a>" : "") . "</td>";
+                        }
+                        echo '</tr>';
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="calendar" id="calenda" >
     <table id="" class="table-calendar table table-bordered table-sm mb-0 table-dark"  >
         <thead class="" style="">
             <tr class="" style="text-align: center;" >
@@ -78,3 +110,4 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
         </tbody>
     </table>
 </div>
+-->

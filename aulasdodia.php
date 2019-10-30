@@ -28,7 +28,7 @@ $tipoDeAula = array('hoje', 'revisão 1', 'revisão 2', 'revisão 3');
 //print_r($aulas2[1]);
 
 $aulasArray = [];
-foreach ($aulas2 as $valor) {
+foreach ($aulas2 as $valor) {    
     $aulasArray[] = $valor['assunto'];
     $aulasArray[] = $valor['data'];
     $aulasArray[] = $valor['nome_materia'];
@@ -48,6 +48,8 @@ foreach ($aulas2 as $valor) {
         default:
             break;
     }
+    $aulasArray[] = $valor['status'];
+    $aulasArray[] = $valor['idaula'];
 }
 
 
