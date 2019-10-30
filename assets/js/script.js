@@ -215,6 +215,15 @@ let funcao = function () {
     }, 200);
 }
 
+let alternar = () => {    
+    if ( $('#dropdown-menu').hasClass('mostrar') ){
+        
+        $('#dropdown-menu').removeClass('mostrar');
+    } else {
+        $('#dropdown-menu').addClass('mostrar');
+    }
+}
+
 function closeModal() {
     c('.calendar').style.opacity = '0';
 

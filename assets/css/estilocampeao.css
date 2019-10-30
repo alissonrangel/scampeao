@@ -41,6 +41,9 @@ header{
     flex-flow: wrap;
 }
 
+.mostrar{
+    display: block !important;
+}
 
 
 /* Extra small devices (portrait phones, less than 576px) */
@@ -62,7 +65,9 @@ header{
 
     .setas{
         color: #666;
-        font-size: 18px;        
+        font-size: 20px;        
+        padding: 0 !important;
+        margin: 0 !important;
     }
 
     .setas:hover, .setas2:hover{
