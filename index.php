@@ -94,9 +94,13 @@ if (isset($_GET['modal'])) {
         </div>
 
     </div>
-    <main class="container">
+    <main class="container mt-2">
         <div class="aula-area">
 
+        </div>
+        <div class="menu mt-2">
+            <a class="btn btn-dark" href="adicionar_materia.php">Adicionar Matéria</a>
+            <a class="btn btn-dark mt-1" href="adicionar_aula.php">Adicionar Matéria</a>
         </div>
     </main>
 
