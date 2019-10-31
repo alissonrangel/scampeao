@@ -22,6 +22,46 @@ class Aula {
         return $this->pdo;
     }
 
+    public function adicionarAula($assunto, $id_usuario, $id_materia, $data_da_aula) {
+
+
+        try {
+            $data1 = date('Y-m-d H:i:s', strtotime($data_da_aula));
+            //$data1 = "2019-10-31 12:30:30";
+            $sql = "insert into aula set assunto = '$assunto', id_usuario = '$id_usuario', "
+                    . "id_materia='$id_materia', status = '0', tipo = '1', "
+                    . "data = '$data1'";
+            $sql = $this->pdo->query($sql);
+
+            $data2 = date('Y-m-d H:i:s', strtotime("+1 days", strtotime($data1)));
+
+            $sql = "insert into aula set assunto = '$assunto', id_usuario = '$id_usuario', "
+                    . "id_materia='$id_materia', status = 0, tipo = 2,"
+                    . "data = '$data2'";
+            $sql = $this->pdo->query($sql);
+
+            $data3 = date('Y-m-d H:i:s', strtotime("+7 days", strtotime($data1)));
+
+            $sql = "insert into aula set assunto = '$assunto', id_usuario = '$id_usuario', "
+                    . "id_materia='$id_materia', status = 0, tipo = 3,"
+                    . "data = '$data3'";
+            $sql = $this->pdo->query($sql);
+
+            $data4 = date('Y-m-d H:i:s', strtotime("+28 days", strtotime($data1)));
+
+            $sql = "insert into aula set assunto = '$assunto', id_usuario = '$id_usuario', "
+                    . "id_materia='$id_materia', status = 0, tipo = 4,"
+                    . "data = '$data4'";
+            $sql = $this->pdo->query($sql);
+
+            return true;
+        } catch (PDOException $e) {
+            echo "Falhou: " . $e->getTraceAsString();
+            echo 'menssagem: ' . $e->getMessage();
+            return false;
+        }
+    }
+
     public function __construct($i = "") {
 
         $this->constructPdo();
