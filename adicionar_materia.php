@@ -70,12 +70,13 @@ $materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
         Cadastrar matéria
     </div>
     <div class="mt-2 container-fluid lista-materias d-flex justify-content-center">
-        <table class="" border="1">
+        <table class="" width="320" border="1">
             <thead>
                 <tr>
                     <th>id</th>
                     <th>Matéria</th>
                     <th>Usuário</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -85,6 +86,7 @@ $materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
                     echo "<td>" . $valor['idmateria'] . "</td>";
                     echo "<td>" . $valor['nome_materia'] . "</td>";
                     echo "<td>" . $valor['nome'] . "</td>";
+                    echo "<td><a href='excluir_materia.php?id_materia=".$valor['idmateria']."'>Excluir</a>";
                     echo '</tr>';
                 }
                 ?>

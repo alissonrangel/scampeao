@@ -25,8 +25,9 @@ class Materia {
             $sql = "insert into materia set nome_materia = '$nome',"
                     . "id_usuario = '$id_usuario'";
             $sql = $this->pdo->query($sql);
-            
-            return true;;
+
+            return true;
+            ;
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
@@ -38,7 +39,7 @@ class Materia {
         $this->constructPdo();
 
         if (!empty($i)) {
-            $sql = "SELECT * FROM materia WHERE idaula = ?";
+            $sql = "SELECT * FROM materia WHERE idmateria = ?";
             $sql = $this->pdo->prepare($sql);
             $sql->execute(array($i));
 
@@ -71,6 +72,18 @@ class Materia {
             $materias = $sql->fetchAll();
         }
         return $materias;
+    }
+
+    function excluirMateria() {
+        try {
+            $sql = "delete from materia where idmateria = '$this->idmateria'";
+            $sql = $this->pdo->query($sql);
+            return true;
+        } catch (PDOException $exc) {
+            echo $exc->getTraceAsString;
+            echo 'Menssagem: ' . $exc->getMessage();
+            return false;
+        }
     }
 
     function getPdo() {
