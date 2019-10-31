@@ -2,8 +2,19 @@
 session_start();
 require './assets/cabecalhoErodape/cabecalho.php';
 //require './assets/classes/materia.class.php';
-
+$_SESSION['id_usuario'] = 1;
 $materia = new Materia();
+
+if ( isset($_POST['materia']) && !empty($_POST['materia'])){
+    $nome_materia = addslashes($_POST['materia']);
+    $id_usuario = $_SESSION['id_usuario'];
+    
+    if($materia->adicionarMAteria($id_usuario, $nome_materia)){
+        echo 'Adicionado com sucesso!!!';
+    } else{
+        echo 'Não adicionou!!!';
+    }
+}
 
 $materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
 ?>
@@ -58,13 +69,13 @@ $materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
     <div class="container-fluid info-barra d-flex justify-content-center align-items-center">
         Cadastrar matéria
     </div>
-    <div class="container-fluid lista-materias">
-        <table class="table table-dark">
+    <div class="mt-2 container-fluid lista-materias d-flex justify-content-center">
+        <table class="" border="1">
             <thead>
                 <tr>
-                    <th>idmateria</th>
-                    <th>Nome matéria</th>
-                    <th>id_usuario</th>
+                    <th>id</th>
+                    <th>Matéria</th>
+                    <th>Usuário</th>
                 </tr>
             </thead>
             <tbody>
@@ -73,16 +84,22 @@ $materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
                     echo '<tr>';
                     echo "<td>" . $valor['idmateria'] . "</td>";
                     echo "<td>" . $valor['nome_materia'] . "</td>";
-                    echo "<td>" . $valor['id_usuario'] . "</td>";
+                    echo "<td>" . $valor['nome'] . "</td>";
                     echo '</tr>';
                 }
                 ?>
             </tbody>
         </table>
     </div>
-    <div class="container-fluid">
+    <div class="container-fluid mt-2">
         <form class="form" method="POST">
+            <input type="hidden" name="id_usuario" value="1">
             <div class="form-group">
+                <label for="materia">Matéria:</label>                
+                <input class="form-control" id="materia" type="text" name="materia">
+            </div>
+            <div class="form-group">
+                <input class="form-control btn btn-success" type="submit" >
             </div>
         </form>
     </div>

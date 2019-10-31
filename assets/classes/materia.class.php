@@ -3,10 +3,9 @@
 class Materia {
 
     private $pdo;
-    private $idmateria;    
+    private $idmateria;
     private $id_usuario;
     private $nome_materia;
-    
 
     public function constructPdo() {
         $this->pdo = "";
@@ -20,6 +19,20 @@ class Materia {
         return $this->pdo;
     }
 
+    public function adicionarMAteria($id_usuario, $nome) {
+
+        try {
+            $sql = "insert into materia set nome_materia = '$nome',"
+                    . "id_usuario = '$id_usuario'";
+            $sql = $this->pdo->query($sql);
+            
+            return true;;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+            return false;
+        }
+    }
+
     public function __construct($i = "") {
 
         $this->constructPdo();
@@ -31,12 +44,12 @@ class Materia {
 
             if ($sql->rowCount() > 0) {
                 $data = $sql->fetch();
-                $this->idmateria = $data["idmateria"];                
+                $this->idmateria = $data["idmateria"];
                 $this->id_usuario = $data["id_usuario"];
-                $this->nome_materia = $data["nome_materia"];                
+                $this->nome_materia = $data["nome_materia"];
             }
         }
-    }    
+    }
 
     public static function listarMateriasByIdUsuario($id_usuario, $pdo) {
 
@@ -47,7 +60,7 @@ class Materia {
                 . "on m.id_usuario = u.idusuario "
                 . "WHERE u.idusuario = :id";
 
-        //echo 'Alisson';
+//echo 'Alisson';
 
         $sql = $pdo->prepare($sql);
 
@@ -65,4 +78,3 @@ class Materia {
     }
 
 }
-
