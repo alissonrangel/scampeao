@@ -1,22 +1,5 @@
 <?php
 require './assets/cabecalhoErodape/cabecalho.php';
-require './aulasdodia.php';
-
-if (empty($_SESSION['id'])) {
-    header("Location: login.php");
-}
-
-
-$modal = "";
-if (isset($_GET['modal'])) {
-    $modal = $_GET['modal'];
-
-    if ($modal == 'mostrar') {
-        $modal = ', funcao()';
-    } else {
-        $modal = ', closeModal()';
-    }
-}
 ?>
 <body onload="povoar2('<?php echo $aulasString; ?>') <?php echo $modal; ?>">
     <header class="bg-dark" onclick="closeModal()">
@@ -31,13 +14,13 @@ if (isset($_GET['modal'])) {
                         <div>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="index.php" class="nav-link active">Home</a>
+                                    <a href="index.php" class="nav-link">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="semTutor/index.php" class="nav-item nav-link disabled">Sem Tutor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="sair.php" class="nav-item nav-link">Logout</a>
+                                    <a href="comTutor/index.php" class="nav-item nav-link disabled">Com Tutor</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-item nav-link disabled">Sobre</a>
@@ -55,7 +38,7 @@ if (isset($_GET['modal'])) {
                                 <li class="nav-item">
                                     <a target="_blank" class="nav-item nav-link" href="https://www.instagram.com/alissondicarvalho"><i class="fab fa-instagram fa-lg"></i></a>
                                 </li>
-                                <li class="nav-item"><a class="nav-item nav-link disabled" href=""><?php echo $_SESSION['nome']; ?></a>
+                                <li class="nav-item"><a class="nav-item nav-link disabled" href=""><?php echo $nome; ?></a>
                             </ul>
 
                         </div>
@@ -64,53 +47,28 @@ if (isset($_GET['modal'])) {
             </nav>      
         </div>
     </header>
-    <div class="container-fluid menu mt-2">
-        <a class="btn btn-dark" href="adicionar_materia.php">Adicionar Matéria</a>
-        <a class="btn btn-dark" href="adicionar_aula.php">Adicionar Aula</a>
-    </div>
-    <div class="mt-2" style="background-color: #ddd">
-        <div class="calendario container-fluid">
-            <?php
-            require './calendario.php';
-            ?>
+    <div class="barra-lateral">
+        <div class="container-fluid w-100 h-100 d-flex justify-content-center align-items-center">
+            <h3>Tela de Login</h3>
         </div>
     </div>
-    <!-- <button class="align-self-center setas" onclick="funcao()"><?php echo $mes; ?></button> -->
-    <div class="models" style="display: none">
+    <div class="container-fluid mt-2">
+        <form class="form" method="POST" action="login_submit.php">
+            <input type="hidden" name="id_usuario" value="1">
 
-        <?php foreach ($aulas as $valor): ?>
-            <div class="aula-item2">
-                <div class="aula-item2-cabecalho">
-                    <div class="aula2-data"><?php echo "data:" . $valor['data']; ?></div>
-                    <div class="aula2-materia"><?php echo "matéria:" . $valor['nome_materia']; ?></div>
-                    <div class="aula2-tipo-aula">Hoje</div>
-                </div>
-                <div class="aula-item2-conteudo">
-                    <?php echo "assunto:" . $valor['assunto']; ?>
-                </div>
+            <div class="form-group">
+                <label for="email">Email:</label>                
+                <input class="form-control" id="email" type="email" name="email">
             </div>
-        <?php endforeach; ?>
-
-        <div class="aula-item" style="">
-            <a class="" href="">
-                <div class="bloco">
-                    <div class="aula-url" data-url="<?php echo $_GET['data']; ?>" style="display: none"><?php echo $_GET['data']; ?></div>
-                    <div class="aula-data"></div>
-                    <div class="aula-materia"></div>
-                    <div class="aula-tipo-aula"></div>
-                    <div class="aula-conteudo"></div>
-                </div>
-            </a>
-
-        </div>
-
+            <div class="form-group">
+                <label for="senha">Senha:</label>                
+                <input class="form-control" id="senha" type="password" name="senha">
+            </div>
+            <div class="form-group">
+                <input class="form-control btn btn-success" type="submit" value="Login" >
+            </div>
+        </form>
     </div>
-    <main class="container-fluid mt-2">
-        <div class="aula-area">
-
-        </div>        
-    </main>
-
 
 
     <?php

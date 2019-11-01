@@ -1,10 +1,15 @@
 <?php
 require './assets/cabecalhoErodape/cabecalho.php';
 //require './assets/classes/materia.class.php';
-
+$id_usuario = 0;
+if (empty($_SESSION['id'])) {
+    header("Location: login.php");
+} else {
+    $id_usuario = $_SESSION['id'];
+}
 $materia = new Materia();
 
-$materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
+$materias = Materia::listarMateriasByIdUsuario($id_usuario, $materia->getPdo());
 ?>
 <body>
     <header class="bg-dark" onclick="closeModal()">
@@ -19,13 +24,13 @@ $materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
                         <div>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="index.php" class="nav-link active">Home</a>
+                                    <a href="index.php" class="nav-link">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="semTutor/index.php" class="nav-item nav-link">Sem Tutor</a>
+                                    <a href="semTutor/index.php" class="nav-item nav-link disabled">Sem Tutor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="comTutor/index.php" class="nav-item nav-link disabled">Com Tutor</a>
+                                    <a href="sair.php" class="nav-item nav-link">Logout</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-item nav-link disabled">Sobre</a>

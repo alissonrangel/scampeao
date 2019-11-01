@@ -24,6 +24,12 @@ nav{
     border-radius: 25px;    
 }
 
+.barra-lateral{
+    height: 40px;
+    background-color: #ddd;
+    width: 100%;
+}
+
 .aula-item{
     color: #343A40;
     padding: 5px;
@@ -33,14 +39,6 @@ nav{
 }
 .aula-item a{
     color: #343A40;
-}
-
-.bg-danger{
-    
-}
-
-.bg-success{
-    
 }
 
 .aula-area{

@@ -39,6 +39,18 @@ class Usuario {
         }
     }
     
+    function fazerLogin($email, $senha) {
+        $sql = "select * from usuario where email = '$email' and "
+                . "senha = md5('$senha')";
+        $sql= $this->pdo->query($sql);
+        
+        $dado = [];
+        if ( $sql->rowCount() > 0){
+            $dado = $sql->fetch();
+        }
+        return $dado;
+    }
+    
     function getIdusuario() {
         return $this->idusuario;
     }

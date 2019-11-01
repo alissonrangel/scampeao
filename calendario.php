@@ -23,10 +23,6 @@ $dia_um = date('d/m/Y', strtotime($dia1_neg . " days", strtotime($data2 . "-01")
 $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", strtotime($data2 . "-01")));
 //echo '<br>dia um:' . $dia_um;
 //echo '<br> dia fim do calendario' . $dia_fim;
-$flag = 'nao';
-if (isset($_GET['flag']) && !empty($_GET['flag'])) {
-    $flag = $_GET['flag'];    
-}
 ?>
 <div class="calendario3 d-flex justify-content-center">
     <div class="dropdown menu-calendar d-flex justify-content-center pl-1 pr-1" style="">
@@ -87,6 +83,10 @@ if (isset($_GET['flag']) && !empty($_GET['flag'])) {
     </div>
 </div>
 <?php
+$flag = 'nao';
+if (isset($_GET['flag']) && !empty($_GET['flag'])) {
+    $flag = $_GET['flag'];
+}
 if ($flag == 'mostrar') {
     echo "<script>let elemento2 = document.getElementById('dropdown-menu');"
     . " elemento2.classList.add('mostrar');</script>";

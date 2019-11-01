@@ -1,13 +1,17 @@
 <?php
-session_start();
 require './assets/cabecalhoErodape/cabecalho.php';
 //require './assets/classes/materia.class.php';
-$_SESSION['id_usuario'] = 1;
 $materia = new Materia();
 
+$id_usuario = 0;
+if (empty($_SESSION['id'])) {
+    header("Location: login.php");
+} else {
+    $id_usuario = $_SESSION['id'];
+}
+
 if ( isset($_POST['materia']) && !empty($_POST['materia'])){
-    $nome_materia = addslashes($_POST['materia']);
-    $id_usuario = $_SESSION['id_usuario'];
+    $nome_materia = addslashes($_POST['materia']);    
     
     if($materia->adicionarMAteria($id_usuario, $nome_materia)){
         echo 'Adicionado com sucesso!!!';
@@ -34,10 +38,10 @@ $materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
                                     <a href="index.php" class="nav-link active">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="semTutor/index.php" class="nav-item nav-link">Sem Tutor</a>
+                                    <a href="semTutor/index.php" class="nav-item nav-link disabled">Sem Tutor</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="comTutor/index.php" class="nav-item nav-link disabled">Com Tutor</a>
+                                    <a href="sair.php" class="nav-item nav-link">Logout</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-item nav-link disabled">Sobre</a>

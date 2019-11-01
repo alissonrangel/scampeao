@@ -16,7 +16,15 @@ and open the template in the editor.
     </head>
 
     <?php
+    session_start();
     require 'assets/classes/aula.class.php';
     require 'assets/classes/materia.class.php';
     require 'assets/classes/usuario.class.php';
+
+    $nome = "ausente";
+    if (empty($_SESSION['nome'])) {
+        
+    } else {
+        $nome = $_SESSION['nome'];
+    }
     ?>
