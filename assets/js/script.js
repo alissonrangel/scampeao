@@ -53,21 +53,21 @@ let povoar2 = (valor) => {
             //aulaItem.addClass('bg-success');
             //aulaItem.setAttribute('style', 'background-color: green')
         }
-        
+
         let data2 = data.split(' ');
-        let date = new Date(data2[0]+"T"+data2[1]);
+        let date = new Date(data2[0] + "T" + data2[1]);
         let mes = date.getMonth() + 1;
         let dataa = date.getDate().toString() +
                 "/" + ((mes >= 10) ? mes.toString() : "0" + mes.toString()) +
                 "/" + date.getFullYear().toString();
-        console.log("daddddddd: "+dataa);
+        console.log("daddddddd: " + dataa);
         aulaItem.querySelector('.aula-data').innerHTML = dataa;
         aulaItem.querySelector('.aula-materia').innerHTML = materia;
         aulaItem.querySelector('.aula-conteudo').innerHTML = assunto;
         aulaItem.querySelector('.aula-tipo-aula').innerHTML = tipo;
         let data3 = aulaItem.querySelector('.aula-url').innerHTML;
-        aulaItem.querySelector('a').setAttribute('href','alterarStatus.php?id='+id+"&data="+data3);
-        
+        aulaItem.querySelector('a').setAttribute('href', 'alterarStatus.php?id=' + id + "&data=" + data3);
+
         document.querySelector('.aula-area').append(aulaItem);
     });
 }
@@ -196,6 +196,10 @@ let povoar = (valor) => {
 }
 
 let funcao = function () {
+    c('.calendar').style.opacity = '1';
+}
+
+let funcao2 = function () {
     /*
      if ($('table').hasClass('table-calendar')) {
      $('table').attr('style', 'display: none');
@@ -215,9 +219,9 @@ let funcao = function () {
     }, 200);
 }
 
-let alternar = () => {    
-    if ( $('#dropdown-menu').hasClass('mostrar') ){
-        
+let alternar = () => {
+    if ($('#dropdown-menu').hasClass('mostrar')) {
+
         $('#dropdown-menu').removeClass('mostrar');
     } else {
         $('#dropdown-menu').addClass('mostrar');
@@ -225,14 +229,14 @@ let alternar = () => {
 }
 
 /*
-function closeModal() {
-    c('.calendar').style.opacity = '0';
-
-    setTimeout(() => {
-        c('.calendar').style.display = 'none';
-    }, 500);
-}
-*/
+ function closeModal() {
+ c('.calendar').style.opacity = '0';
+ 
+ setTimeout(() => {
+ c('.calendar').style.display = 'none';
+ }, 500);
+ }
+ */
 
 //let calenda = $('.calendar').width();
 //let esquerda = (window.innerWidth/2) - (Math.floor(calenda/2));

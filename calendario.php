@@ -23,11 +23,16 @@ $dia_um = date('d/m/Y', strtotime($dia1_neg . " days", strtotime($data2 . "-01")
 $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", strtotime($data2 . "-01")));
 //echo '<br>dia um:' . $dia_um;
 //echo '<br> dia fim do calendario' . $dia_fim;
+$flag = 'nao';
+if (isset($_GET['flag']) && !empty($_GET['flag'])) {
+    $flag = $_GET['flag'];    
+}
 ?>
-<div class="">
-    <div class="dropdown menu-calendar pl-1 pr-1" style="">
-        <div class="pb-1 pt-1 d-flex justify-content-between" style="">
+<div class="calendario3 d-flex justify-content-center">
+    <div class="dropdown menu-calendar d-flex justify-content-center pl-1 pr-1" style="">
+        <div class="calendar pb-1 pt-1 d-flex justify-content-between" style="">
             <form method="GET" >
+                <input type="hidden" name="flag" value="<?php echo 'mostrar'; ?>">
                 <input type="hidden" name="data" value="<?php echo date('Y-m', strtotime("-1 month", strtotime($data2 . "-01"))); ?>">
                 <input type="hidden" name="modal" value="mostrar">
                 <button type="submit" class="btn btn-link setas" >
@@ -38,6 +43,7 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
             </form>
             <button data-toggle="dropdown" class="dropdown-toggle btn btn-link align-self-center setas" onclick="alternar()"><?php echo $mes; ?></button>
             <form method="GET"> 
+                <input type="hidden" name="flag" value="<?php echo 'mostrar'; ?>">
                 <input type="hidden" name="data" value="<?php echo date('Y-m', strtotime("+1 month", strtotime($data2 . "-01"))); ?>">
                 <input type="hidden" name="modal" value="mostrar">
                 <button type="submit" class="btn btn-link setas" onclick="funcao('<?php echo date('Y-m', strtotime("+1 month", strtotime($data2 . "-01"))); ?>')"  >
@@ -48,7 +54,7 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
                 </button>
             </form>
         </div>
-        <div class="dropdown-menu" id="dropdown-menu">
+        <div class="dropdown-menu table-calendar2" id="dropdown-menu">
             <table id="" class="table-calendar table table-bordered table-sm mb-0 table-dark"  >
                 <thead class="" style="">
                     <tr class="" style="text-align: center;" >
@@ -80,7 +86,12 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
         </div>
     </div>
 </div>
-
+<?php
+if ($flag == 'mostrar') {
+    echo "<script>let elemento2 = document.getElementById('dropdown-menu');"
+    . " elemento2.classList.add('mostrar');</script>";
+}
+?>
 
 <!-- <div class="calendar" id="calenda" >
     <table id="" class="table-calendar table table-bordered table-sm mb-0 table-dark"  >

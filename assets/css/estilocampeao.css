@@ -70,6 +70,10 @@ nav{
     nav{
         width: 100%;
     }
+    
+    .calendar{
+        width: 100%;
+    }
     .calendario{
         width: 100%;
     }
@@ -90,7 +94,7 @@ nav{
         text-decoration: none !important;
     }
 
-    .calendar{
+    .calendar2{
         position:relative;
         left:0;
         top:0;
@@ -125,6 +129,23 @@ nav{
 
 /* Small devices (landscape phones, less than 768px) */
 @media (min-width: 576px) {
+    
+    .calendar{
+        width: 400px;
+    }
+    
+    .calendario{
+        width: 100%;
+    }
+    
+    .calendario3{
+        
+    }
+    
+    .table-calendar2{
+        width: 100%;
+    }
+    
     header{
         height: 60px;
     }
@@ -139,12 +160,13 @@ nav{
     }
     
     .menu-calendar{
+        width: 400px;
         background-color: #ddd;
         display: flex;
         justify-content: space-between;
     }
 
-    .calendar{
+    .calendar2{
         position:fixed;
         width: 70%;
         left:0;

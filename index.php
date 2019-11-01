@@ -41,10 +41,6 @@ if (isset($_GET['modal'])) {
                                 </li>                                
                             </ul>
                         </div>
-
-                        <select>
-                            
-                        </select>
                         <div class="ml-auto" >
                             <ul class="navbar-nav">                                
                                 <li class="nav-item">
