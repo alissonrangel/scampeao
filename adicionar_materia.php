@@ -20,7 +20,7 @@ if ( isset($_POST['materia']) && !empty($_POST['materia'])){
     }
 }
 
-$materias = Materia::listarMateriasByIdUsuario(1, $materia->getPdo());
+$materias = Materia::listarMateriasByIdUsuario($id_usuario, $materia->getPdo());
 ?>
 <body onload="povoar2('<?php echo $aulasString; ?>') <?php echo $modal; ?>">
     <header class="bg-dark" onclick="closeModal()">

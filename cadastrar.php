@@ -14,13 +14,13 @@ require './assets/cabecalhoErodape/cabecalho.php';
                         <div>
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a href="index.php" class="nav-link">Home</a>
+                                    <a href="index.php" class="nav-item nav-link">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="cadastrar.php" class="nav-item nav-link">Cadastrar</a>
+                                    <a href="cadastrar.php" class="nav-item nav-link active">Cadastrar</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="login.php" class="nav-item nav-link active">Login</a>
+                                    <a href="login.php" class="nav-item nav-link">Login</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="" class="nav-item nav-link disabled">Sobre</a>
@@ -49,11 +49,15 @@ require './assets/cabecalhoErodape/cabecalho.php';
     </header>
     <div class="barra-lateral">
         <div class="container-fluid w-100 h-100 d-flex justify-content-center align-items-center">
-            <h3>Tela de Login</h3>
+            <h3>Cadastrar Usuário</h3>
         </div>
     </div>
     <div class="container-fluid mt-2">
-        <form class="form" method="POST" action="login_submit.php">
+        <form class="form" method="POST" action="cadastrar_submit.php">
+            <div class="form-group">
+                <label for="nome">Nome:</label>                
+                <input class="form-control" id="nome" type="text" name="nome">
+            </div>
             <div class="form-group">
                 <label for="email">Email:</label>                
                 <input class="form-control" id="email" type="email" name="email">
@@ -63,10 +67,12 @@ require './assets/cabecalhoErodape/cabecalho.php';
                 <input class="form-control" id="senha" type="password" name="senha">
             </div>
             <div class="form-group">
-                <input class="form-control btn btn-success" type="submit" value="Login" >
+                <input class="form-control btn btn-success" type="submit" value="Cadastrar" >
             </div>
         </form>
     </div>
+
+
 
 
     <?php

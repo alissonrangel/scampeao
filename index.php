@@ -2,10 +2,6 @@
 require './assets/cabecalhoErodape/cabecalho.php';
 require './aulasdodia.php';
 
-if (empty($_SESSION['id'])) {
-    header("Location: login.php");
-}
-
 
 $modal = "";
 if (isset($_GET['modal'])) {

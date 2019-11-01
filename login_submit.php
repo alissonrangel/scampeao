@@ -13,8 +13,9 @@ if (isset($_POST['email']) && !empty($_POST['email']) &&
     $senha = addslashes($_POST['senha']);
 
     $usuario = $usuario->fazerLogin($email, $senha);
-
-    if ($usuario == []) {
+    if ($usuario == false){
+        echo 'Confirme para você poder ter acesso';
+    } else if ($usuario == []) {
         echo 'Usuário não encontrado';
     } else {
         $_SESSION['id'] = $usuario['idusuario'];

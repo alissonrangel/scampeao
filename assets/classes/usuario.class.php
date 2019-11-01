@@ -39,9 +39,57 @@ class Usuario {
         }
     }
     
+    function atualizarStatus() {
+        $sql = "update usuario set status = '$this->status' "
+                . "where idusuario = '$this->idusuario'";
+        
+        $sql = $this->pdo->query($sql);
+    }
+    
+    function cadastrarUsuario($nome, $email, $senha) {
+        try{
+        echo '<br>@0';    
+        $sql = "insert into usuario set nome ='$nome', email = '$email',"
+                . " senha = md5('$senha'), status = 0, "
+                . "imagem = 'usuario_em_branco.png', "
+                . "permissoes = 'ADD,DEL,EDIT'";
+        
+        $sql = $this->pdo->query($sql);
+        echo '<br>@1';
+        } catch (PDOException $exp){
+            echo '<br>@2';
+            echo '<br>Falha1: '.$exp->getTraceAsString();
+            echo '<br>Falha2: '.$exp->getMessage();
+            return 1;
+        }
+        
+        echo '<br>@3';
+        
+        $sql = "select idusuario from usuario where email = '$email' and "
+                . "senha = md5('$senha')";
+        $sql = $this->pdo->query($sql);
+        $dado = 0;
+        if ( $sql->rowCount() > 0){
+            echo '<br>@4';
+            $dado = $sql->fetch();
+            echo "<br>dado: ".$dado['idusuario']."<br>";
+        }
+        echo '<br>@5';
+        return $dado['idusuario'];
+    }
+    
     function fazerLogin($email, $senha) {
         $sql = "select * from usuario where email = '$email' and "
-                . "senha = md5('$senha')";
+                . "senha = md5('$senha') and status = '0'";
+        $sql= $this->pdo->query($sql);
+        
+        
+        if ( $sql->rowCount() > 0){
+            return false;
+        }
+        
+        $sql = "select * from usuario where email = '$email' and "
+                . "senha = md5('$senha') and status = '1'";
         $sql= $this->pdo->query($sql);
         
         $dado = [];
@@ -49,6 +97,10 @@ class Usuario {
             $dado = $sql->fetch();
         }
         return $dado;
+    }
+    
+    function setStatus($status) {
+        $this->status = $status;
     }
     
     function getIdusuario() {

@@ -65,7 +65,7 @@ $materias = Materia::listarMateriasByIdUsuario($id_usuario, $materia->getPdo());
 
     <div class="container-fluid mt-2">
         <form class="form" method="GET" action="adicionar_aula2.php">
-            <input type="hidden" name="id_usuario" value="1">
+            <input type="hidden" name="id_usuario" value="<?php echo $id_usuario; ?>">
             <div class="form-group">
                 <label for="materia">Matéria:</label>                
                 <select required name="materia">                    

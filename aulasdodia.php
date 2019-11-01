@@ -1,7 +1,12 @@
 <?php
 
+if (empty($_SESSION['id'])) {
+    header("Location: login.php");
+}
+$id_usuario = $_SESSION['id'];
+
 $aula = new Aula();
-$usuario = new Usuario(1);
+$usuario = new Usuario($id_usuario);
 
 $data = date("Y-m-d", time());
 
