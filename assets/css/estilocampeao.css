@@ -77,7 +77,15 @@ nav{
     }
     
     .menu-calendar{
+        display: flex;
+        justify-content: space-between !important;
+        width: 100%; 
         background-color: #ddd;
+    }
+    
+    .table-calendar2{
+        width: 100%;
+        z-index: 0;
     }
 
     .setas{

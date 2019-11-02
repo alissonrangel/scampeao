@@ -88,15 +88,43 @@ if (isset($_GET['modal'])) {
         <?php endforeach; ?>
 
         <div class="aula-item" style="">
-            <a class="" href="">
+            <a class="" href="" data-toggle="modal" data-target="">
                 <div class="bloco">
                     <div class="aula-url" data-url="<?php echo $_GET['data']; ?>" style="display: none"><?php echo $_GET['data']; ?></div>
                     <div class="aula-data"></div>
                     <div class="aula-materia"></div>
                     <div class="aula-tipo-aula"></div>
-                    <div class="aula-conteudo"></div>
+                    <!-- <div class="aula-conteudo"></div> -->
                 </div>
             </a>
+            <div class="modal fade idd" id="">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Titulo da aula</h5>
+                            <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col aula-data"></div>
+                                <div class="col aula-materia"></div>
+                                <div class="col aula-status">
+                                    <input type="checkbox" name="check" checked="" onchange="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                Assunto:<br>
+                                <div class="col aula-conteudo"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" >Salvar</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
 

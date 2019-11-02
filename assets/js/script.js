@@ -1,5 +1,3 @@
-
-
 const c = (el) => document.querySelector(el);
 
 const cs = (el) => document.querySelectorAll(el);
@@ -65,9 +63,11 @@ let povoar2 = (valor) => {
         aulaItem.querySelector('.aula-materia').innerHTML = materia;
         aulaItem.querySelector('.aula-conteudo').innerHTML = assunto;
         aulaItem.querySelector('.aula-tipo-aula').innerHTML = tipo;
+        
         let data3 = aulaItem.querySelector('.aula-url').innerHTML;
         aulaItem.querySelector('a').setAttribute('href', 'alterarStatus.php?id=' + id + "&data=" + data3);
-
+        aulaItem.querySelector('a').setAttribute('data-target', '#janela'+id);
+        aulaItem.querySelector('.idd').setAttribute('id','janela'+id);
         document.querySelector('.aula-area').append(aulaItem);
     });
 }
