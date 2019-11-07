@@ -59,6 +59,8 @@ foreach ($aulas2 as $valor) {
 
 
 $aulasString = implode(',', $aulasArray);
+
+//echo 'skhdalnnn : '.$aulasString;
 /*
   $aulasArray = [];
   foreach ($aulas as $valor) {

@@ -83,6 +83,20 @@ class Aula {
         }
     }
 
+    public static function isAulaAtrasada($id, $pdo) {
+
+        $sql = "select * from aula where data <= now() and"
+                . " status = 0 and idaula = '$id'";
+
+        $sql = $pdo->query($sql);
+
+        if ($sql->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function atualizarStatus() {
         if ($this->status == 0) {
             $sql = "Update aula set status = 1 where idaula ='$this->idaula'";
@@ -121,23 +135,35 @@ class Aula {
                 . "FROM aula a "
                 . "INNER JOIN materia m "
                 . "on a.id_materia = m.idmateria "
-                . "WHERE a.id_usuario = :id "
+                . "WHERE a.id_usuario = '$id_usuario' "
                 . "AND data >= '$data 00:00:00' "
                 . "AND data <= '$data 23:59:59' "
                 . "order by tipo, data";
 
         //echo 'Alisson';
 
-        $sql = $pdo->prepare($sql);
+        $sql = $pdo->query($sql);
 
-        $sql->bindValue(":id", $id_usuario);
+        //$sql->bindValue(":id", $id_usuario);
         //$sql->bindValue(":data", $data);
-        $sql->execute();
+        //$sql->execute();
 
         $aulas = [];
         if ($sql->rowCount() > 0) {
             $aulas = $sql->fetchAll();
-            return true;
+            
+            $flag = false;
+            foreach ($aulas as $valor) {
+                if (Aula::isAulaAtrasada($valor['idaula'], $pdo)) {
+                    return 'laranja';
+                }
+                $flag = true;
+            }
+            if ($flag){
+                return 'verde';
+            }
+            
+            return 'vazio';
         }
         return false;
     }

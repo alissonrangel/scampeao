@@ -28,7 +28,7 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
     <div class="dropdown menu-calendar d-flex justify-content-center pl-1 pr-1" style="">
         <div class="calendar pb-1 pt-1 d-flex justify-content-between" style="">
             <form method="GET" >
-                <input type="hidden" name="flag" value="<?php echo 'mostrar'; ?>">
+                <input type="hidden" name="flag" value="<?php echo 'mostrar'; ?>"> 
                 <input type="hidden" name="data" value="<?php echo date('Y-m', strtotime("-1 month", strtotime($data2 . "-01"))); ?>">
                 <input type="hidden" name="modal" value="mostrar">
                 <button type="submit" class="btn btn-link setas" >
@@ -69,10 +69,20 @@ $dia_fim = date('d/m/Y', strtotime(($dia1_neg - 1 + (7 * $linhas)) . " days", st
                     for ($i = 0; $i < $linhas; $i++) {
                         echo '<tr>';
                         for ($index = 0; $index < 7; $index++) {
-
+                            
                             $dia_x = date('d-m', strtotime(($dia1_neg + $index + ($i * 7) ) . " days", strtotime($data2 . "")));
                             $dia_x2 = date('Y-m-d', strtotime(($dia1_neg + $index + ($i * 7) ) . " days", strtotime($data2 . "")));
-                            echo "<td><span class='data-calendar'>" . $dia_x . "</span>" . ((Aula::temAulaNesteDia($usuario->getIdusuario(), $aula->getPdo(), $dia_x2)) ? "<a class='icone-calendar' onclick='closeModal()' href='index.php?data=" . $dia_x2 . "'> <i class='fab fa-twitter-square fa-xg'></i></a>" : "") . "</td>";
+                            //echo "<td><span class='data-calendar'>" . $dia_x . "</span>" . ((Aula::temAulaNesteDia($usuario->getIdusuario(), $aula->getPdo(), $dia_x2)) ? "<a class='icone-calendar' onclick='closeModal()' href='index.php?data=" . $dia_x2 . "'> <i class='fab fa-twitter-square fa-xg'></i></a>" : "") . "</td>";
+                            if ( Aula::temAulaNesteDia($usuario->getIdusuario(),$aula->getPdo(), $dia_x2 ) == 'verde'){
+                                echo "<td><span class='data-calendar'>" . $dia_x . "</span>"."<a class='icone-calendar' onclick='closeModal()' href='index.php?data=" . $dia_x2 . "'><i style='color: green;' class='fab fa-twitter-square fa-xg'></i></a>"."</td>";
+                                //echo '<td><span class="data-calendar" style="color: green;">' . $dia_x . '</span></td>';
+                            } else if ( Aula::temAulaNesteDia($usuario->getIdusuario(),$aula->getPdo(), $dia_x2 ) == 'laranja') {
+                                echo "<td><span class='data-calendar'>" . $dia_x . "</span>"."<a class='icone-calendar' onclick='closeModal()' href='index.php?data=" . $dia_x2 . "'><i style='color: orange;' class='fab fa-twitter-square fa-xg'></i></a>"."</td>";
+                                //echo '<td><span class="data-calendar" style="color: orange;">' . $dia_x . '</span></td>';
+                            } else {
+                                echo '<td><span class="data-calendar">' . $dia_x . '</span></td>';
+                            }
+                            //echo "<td><span class='data-calendar'>" . $dia_x . "</span>" . ((Aula::temAulaNesteDia($usuario->getIdusuario(), $aula->getPdo(), $dia_x2)) ? "<a class='icone-calendar' onclick='closeModal()' href='index.php?data=" . $dia_x2 . "'> <i class='fab fa-twitter-square fa-xg'></i></a>" : "") . "</td>";
                         }
                         echo '</tr>';
                     }
@@ -108,6 +118,7 @@ if ($flag == 'mostrar') {
         </thead>
         <tbody>
 <?php
+/*
 $x = 0;
 for ($i = 0; $i < $linhas; $i++) {
     echo '<tr>';
@@ -119,6 +130,8 @@ for ($i = 0; $i < $linhas; $i++) {
     }
     echo '</tr>';
 }
+ * 
+ */
 ?>
         </tbody>
     </table>

@@ -7,11 +7,15 @@ let aulas2 = [];
 let aulas3 = [];
 let aulas4 = [];
 
+let povoar3 = () => {
+    alert("povoar");
+}
+
 let povoar2 = (valor) => {
 
     let array = valor.split(',');
 
-    console.log(array);
+    //console.log(array);
 
     if (array.length == 1) {
 
@@ -45,9 +49,11 @@ let povoar2 = (valor) => {
         if (status == 0) {
             //aulaItem.addClass('bg-danger');
             aulaItem.classList.add('bg-danger')
+            //aulaItem.querySelector('.check').setAttribute('checked',"");
             //aulaItem.setAttribute('style', 'background-color: red');
         } else {
             aulaItem.classList.add('bg-success')
+            //aulaItem.querySelector('.check').setAttribute('checked',"checked");
             //aulaItem.addClass('bg-success');
             //aulaItem.setAttribute('style', 'background-color: green')
         }
@@ -55,19 +61,23 @@ let povoar2 = (valor) => {
         let data2 = data.split(' ');
         let date = new Date(data2[0] + "T" + data2[1]);
         let mes = date.getMonth() + 1;
-        let dataa = date.getDate().toString() +
+        let dia = date.getDate();
+        let dataa = ((dia >= 10) ? dia.toString() : "0" + dia.toString()) +
                 "/" + ((mes >= 10) ? mes.toString() : "0" + mes.toString()) +
                 "/" + date.getFullYear().toString();
-        console.log("daddddddd: " + dataa);
+        let dataa2 = date.getFullYear().toString() + "-" +
+                ((mes >= 10) ? mes.toString() : "0" + mes.toString()) + "-" +
+                ((dia >= 10) ? dia.toString() : "0" + dia.toString());
+        console.log("daddddddd: " + dataa2);
         aulaItem.querySelector('.aula-data').innerHTML = dataa;
         aulaItem.querySelector('.aula-materia').innerHTML = materia;
         aulaItem.querySelector('.aula-conteudo').innerHTML = assunto;
         aulaItem.querySelector('.aula-tipo-aula').innerHTML = tipo;
-        
+
         let data3 = aulaItem.querySelector('.aula-url').innerHTML;
-        aulaItem.querySelector('a').setAttribute('href', 'alterarStatus.php?id=' + id + "&data=" + data3);
-        aulaItem.querySelector('a').setAttribute('data-target', '#janela'+id);
-        aulaItem.querySelector('.idd').setAttribute('id','janela'+id);
+        aulaItem.querySelector('a').setAttribute('href', 'alterarStatus.php?id=' + id + "&data=" + dataa2);
+        aulaItem.querySelector('.btmodal').setAttribute('data-target', '#janela' + id);
+        aulaItem.querySelector('.idd').setAttribute('id', 'janela' + id);
         document.querySelector('.aula-area').append(aulaItem);
     });
 }
@@ -199,7 +209,7 @@ let funcao = function () {
     c('.calendar').style.opacity = '1';
 }
 
-let funcao2 = function () {
+let funcaox = function () {
     /*
      if ($('table').hasClass('table-calendar')) {
      $('table').attr('style', 'display: none');
@@ -219,7 +229,7 @@ let funcao2 = function () {
     }, 200);
 }
 
-let alternar = () => {
+function alternar() {
     if ($('#dropdown-menu').hasClass('mostrar')) {
 
         $('#dropdown-menu').removeClass('mostrar');
@@ -228,16 +238,13 @@ let alternar = () => {
     }
 }
 
-/*
- function closeModal() {
- c('.calendar').style.opacity = '0';
- 
- setTimeout(() => {
- c('.calendar').style.display = 'none';
- }, 500);
- }
- */
 
-//let calenda = $('.calendar').width();
-//let esquerda = (window.innerWidth/2) - (Math.floor(calenda/2));
-//$('.calendar').attr('style','left:'+esquerda+'px');
+function closeModal() {
+    c('.calendar').style.opacity = '0';
+    c('.calendar').style.display = 'none';
+    /*
+    setTimeout(() => {
+        c('.calendar').style.display = 'none';
+    }, 500);
+    */
+}
